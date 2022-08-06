@@ -66,14 +66,14 @@ const OrderDetail = () => {
                             <p>
                                 <b>Tarih:</b> <span>{new Date(order.date).toLocaleDateString("tr-TR")}</span>
                             </p>
-                            <p>
+                            <div>
                                 <b>Sipariş İçeriği:</b>
-                                <span>
+                                <div>
                                     {order.products.map((prd, i) =>
                                         <div key={`prd${i}`}>{prd}</div>
                                     )}
-                                </span>
-                            </p>
+                                </div>
+                            </div>
                             <p>
                                 <b>Sipariş Notu:</b> <span>{order.note}</span>
                             </p>
