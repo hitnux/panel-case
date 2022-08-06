@@ -1,0 +1,25 @@
+.card-container {
+    max-width: 90%;
+    margin: 2rem auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1rem;
+
+    .card {
+        padding: 1rem;
+        border: solid 1px #ddd;
+        border-radius: .5rem;
+        min-width: 25%;
+
+        &__title {
+            text-align: left;
+        }
+
+        &__body {
+            margin: 1rem 0;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+    }
+}

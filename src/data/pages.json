@@ -1,0 +1,47 @@
+{
+    "pages": [
+        {
+            "id": 1,
+            "name": "Home",
+            "path": "/dash",
+            "access": [
+                "Admin",
+                "Customer Support"
+            ],
+            "showMenu": true,
+            "icon": "HomeIcon"
+        },
+        {
+            "id": 2,
+            "name": "Users",
+            "path": "/users",
+            "access": [
+                "Admin"
+            ],
+            "showMenu": true,
+            "icon": "PeopleAltIcon"
+        },
+        {
+            "id": 3,
+            "name": "Orders",
+            "path": "/orders",
+            "access": [
+                "Admin",
+                "Customer Support"
+            ],
+            "showMenu": true,
+            "icon": "ShoppingBasketIcon"
+        },
+        {
+            "id": 4,
+            "name": "Login",
+            "path": "/",
+            "access": [
+                "Everyone",
+                "Admin",
+                "Customer Support"
+            ],
+            "showMenu": false
+        }
+    ]
+}

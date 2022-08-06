@@ -1,0 +1,19 @@
+/*page variables*/
+$padding-top: 5rem;
+
+.login {
+    width: 100%;
+    height: calc(100vh - $padding-top);
+    background-color: #1a1b3b;
+    padding: $padding-top 0 0;
+
+    &-wrapper {
+        max-width: 500px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 1rem;
+        border: solid 1px #333;
+        border-radius: .5rem;
+        gap: .75rem;
+    }
+}

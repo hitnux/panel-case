@@ -1,0 +1,70 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "username": "admin",
+            "password": "admin",
+            "role": "Admin",
+            "accessKey": "admin111",
+            "name": "Halil",
+            "surname": "Bilgin",
+            "email": "halil.bilgin@panel.com",
+            "created": "2020-01-10T10:15:50.100Z"
+        },
+        {
+            "id": 2,
+            "username": "cs",
+            "password": "cs",
+            "role": "Customer Support",
+            "accessKey": "cs111",
+            "name": "Ali",
+            "surname": "Bilge",
+            "email": "ali.bilge@panel.com",
+            "created": "2021-12-01T13:49:51.141Z"
+        },
+        {
+            "id": 3,
+            "username": "cs1",
+            "password": "cs1",
+            "role": "Customer Support",
+            "accessKey": "cs001",
+            "name": "Damla",
+            "surname": "Yudum",
+            "email": "cs_1@panel.com",
+            "created": "2022-01-01T13:49:51.141Z"
+        },
+        {
+            "id": 4,
+            "username": "rick",
+            "password": "rick",
+            "role": "Admin",
+            "accessKey": "rickSanchez",
+            "name": "Rick",
+            "surname": "Sanchez",
+            "email": "rick_sanchez@panel.com",
+            "created": "2020-10-01T13:49:51.141Z"
+        },
+        {
+            "id": 5,
+            "username": "morty",
+            "password": "morty",
+            "role": "Admin",
+            "accessKey": "MortySmith",
+            "name": "Morty",
+            "surname": "Smith",
+            "email": "morty_smith@panel.com",
+            "created": "2020-10-02T13:49:51.141Z"
+        },
+        {
+            "id": 6,
+            "username": "summer",
+            "password": "summer",
+            "role": "Customer Support",
+            "accessKey": "SummerSmith",
+            "name": "Summer",
+            "surname": "Smith",
+            "email": "summer_smith@panel.com",
+            "created": "2020-10-03T13:49:51.141Z"
+        }
+    ]
+}
