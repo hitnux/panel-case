@@ -13,6 +13,8 @@ const OrderDetail = () => {
     const order = orders.find(o => o.id === parseInt(Id));
     const [activeStep, setActiveStep] = useState(steps.findIndex(s => s.name === order.state));
     const [alert, setAlert] = useState(false);
+    const options = { hour:'numeric',minute:'numeric', year: 'numeric', month: 'long', day: 'numeric' };
+
 
     const handleNext = () => {
         if (false) {
@@ -64,7 +66,7 @@ const OrderDetail = () => {
                                 <b>Sipariş Id:</b> <span>{Id}</span>
                             </p>
                             <p>
-                                <b>Tarih:</b> <span>{new Date(order.date).toLocaleDateString("tr-TR")}</span>
+                                <b>Tarih:</b> <span>{new Date(order.date).toLocaleDateString("tr-TR", options)}</span>
                             </p>
                             <div>
                                 <b>Sipariş İçeriği:</b>
