@@ -7,6 +7,10 @@
                 "surname": "Sanchez",
                 "address": "Washington, DC 20500, Amerika Birleşik Devletleri"
             },
+            "products": [
+                "Product 1",
+                "Product 2"
+            ],
             "total": 140.00,
             "date": "2022-08-06T14:00:00.150Z",
             "state": "Completed",
@@ -19,6 +23,10 @@
                 "surname": "Smith",
                 "address": "Washington, DC 20500, Amerika Birleşik Devletleri"
             },
+            "products": [
+                "Product 1",
+                "Product 3"
+            ],
             "total": 70.00,
             "date": "2022-08-06T12:00:00.150Z",
             "state": "Completed",
@@ -31,6 +39,10 @@
                 "surname": "Sanchez",
                 "address": "Washington, DC 20500, Amerika Birleşik Devletleri"
             },
+            "products": [
+                "Product 1",
+                "Product 4"
+            ],
             "total": 840.00,
             "date": "2022-08-06T14:00:00.150Z",
             "state": "Completed",
@@ -43,6 +55,10 @@
                 "surname": "Bilge",
                 "address": "Yıldız Teknopark, Yıldız Teknik Üniversitesi, Davutpaşa Kampüsü, 34220 Esenler/İstanbul"
             },
+            "products": [
+                "Product 2",
+                "Product 5"
+            ],
             "total": 750.50,
             "date": "2022-01-10T10:00:30.150Z",
             "state": "New",
@@ -55,6 +71,9 @@
                 "surname": "Bilgin",
                 "address": "Yıldız Teknopark, Yıldız Teknik Üniversitesi, Davutpaşa Kampüsü, 34220 Esenler/İstanbul"
             },
+            "products": [
+                "Product 1"
+            ],
             "total": 30.00,
             "date": "2022-06-10T08:00:30.150Z",
             "state": "Completed",
@@ -67,6 +86,9 @@
                 "surname": "Bilge",
                 "address": "Yıldız Teknopark, Yıldız Teknik Üniversitesi, Davutpaşa Kampüsü, 34220 Esenler/İstanbul"
             },
+            "products": [
+                "Product 7"
+            ],
             "total": 54.90,
             "date": "2022-04-10T13:00:00.150Z",
             "state": "New",
@@ -79,6 +101,9 @@
                 "surname": "Bilge",
                 "address": "Yıldız Teknopark, Yıldız Teknik Üniversitesi, Davutpaşa Kampüsü, 34220 Esenler/İstanbul"
             },
+            "products": [
+                "Product 8"
+            ],
             "total": 4.90,
             "date": "2022-04-21T21:00:00.150Z",
             "state": "Completed",
@@ -91,6 +116,10 @@
                 "surname": "Bilgin",
                 "address": "Yıldız Teknopark, Yıldız Teknik Üniversitesi, Davutpaşa Kampüsü, 34220 Esenler/İstanbul"
             },
+            "products": [
+                "Product 1",
+                "Product 6"
+            ],
             "total": 100.00,
             "date": "2022-08-05T14:00:00.150Z",
             "state": "Process",
@@ -103,6 +132,13 @@
                 "surname": "Sanchez",
                 "address": "Washington, DC 20500, Amerika Birleşik Devletleri"
             },
+            "products": [
+                "Product 1",
+                "Product 2",
+                "Product 4",
+                "Product 10",
+                "Product 12"
+            ],
             "total": 410.00,
             "date": "2022-08-06T14:00:00.150Z",
             "state": "Process",
@@ -115,6 +151,9 @@
                 "surname": "Smith",
                 "address": "Washington, DC 20500, Amerika Birleşik Devletleri"
             },
+            "products": [
+                "Product 10"
+            ],
             "total": 320.00,
             "date": "2022-08-06T12:00:00.150Z",
             "state": "Process",
@@ -127,6 +166,11 @@
                 "surname": "Smith",
                 "address": "Washington, DC 20500, Amerika Birleşik Devletleri"
             },
+            "products": [
+                "Product 2",
+                "Product 4",
+                "Product 12"
+            ],
             "total": 650.00,
             "date": "2022-08-06T16:00:00.150Z",
             "state": "Process",
@@ -139,6 +183,9 @@
                 "surname": "Sanchez",
                 "address": "Washington, DC 20500, Amerika Birleşik Devletleri"
             },
+            "products": [
+                "Product 8"
+            ],
             "total": 570.00,
             "date": "2022-08-06T16:00:00.150Z",
             "state": "New",
@@ -151,6 +198,11 @@
                 "surname": "Smith",
                 "address": "Washington, DC 20500, Amerika Birleşik Devletleri"
             },
+            "products": [
+                "Product 5",
+                "Product 6",
+                "Product 7"
+            ],
             "total": 250.00,
             "date": "2022-08-06T16:00:00.150Z",
             "state": "New",

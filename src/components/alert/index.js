@@ -8,7 +8,7 @@ const AlertModal = ({ children, state, onChange, time = 3000 }) => {
     return (
         <>
             {state &&
-                <div className='alert-modal'>
+                <div className="alert-modal">
                     <Alert variant="filled" severity="error">
                         {children}
                     </Alert>
