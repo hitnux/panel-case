@@ -39,11 +39,11 @@ const columns = [
 const Orders = () => {
     const orders = useSelector((state) => state.orders.value)
     const navigate = useNavigate();
-    const [status, setStatus] = useState([]);
     const [orderList, setOrderList] = useState(orders);
+    let status = [];
 
     orders.forEach((value) => {
-        if (!status.includes(value.state)) setStatus([...status, value.state])
+        if (!status.includes(value.state)) status = [...status, value.state]
     });
 
     const filterChange = (e) => {
@@ -58,14 +58,13 @@ const Orders = () => {
 
     return (
         <Layout>
-            <div className="filters">
-                <Filter
-                    data={status}
-                    value={status}
-                    label="Status"
-                    onChange={filterChange}
-                />
-            </div>
+            <Filter
+                data={status}
+                value={status}
+                label="Status"
+                tabs={true}
+                onChange={filterChange}
+            />
             <Box sx={{
                 height: '79vh', width: '100%',
                 '& .ShowDetail': {
