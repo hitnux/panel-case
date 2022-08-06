@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import Layout from '../../components/layout';
 import Filter from '../../components/filter'
 
+const options = { hour:'numeric',minute:'numeric', year: 'numeric', month: 'long', day: 'numeric' };
+
 const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
     {
@@ -18,7 +20,7 @@ const columns = [
         field: 'date',
         headerName: 'Registration Date',
         width: 200,
-        valueGetter: (data) => new Date(data.value).toLocaleDateString("tr-TR")
+        valueGetter: (data) => new Date(data.value).toLocaleDateString("tr-TR", options)
     },
     { field: 'state', headerName: 'Status', width: 150 },
     {
