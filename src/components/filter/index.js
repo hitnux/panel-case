@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { FormControl, Select, MenuItem, InputLabel } from '@mui/material';
 
 const Filter = ({
@@ -7,7 +7,7 @@ const Filter = ({
     onChange = () => { },
     data = []
 }) => {
-    const [val, setVal] = React.useState(value);
+    const [val, setVal] = useState(value);
     const changed = (e) => {
         setVal(e.target.value);
         onChange(e);

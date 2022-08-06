@@ -1,4 +1,3 @@
-import React from 'react';
 import { Alert } from '@mui/material';
 
 const AlertModal = ({ children, state, onChange, time = 3000 }) => {
@@ -16,7 +15,6 @@ const AlertModal = ({ children, state, onChange, time = 3000 }) => {
                 </div>
             }
         </>
-
     )
 }
 export default AlertModal;

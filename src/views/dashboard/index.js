@@ -6,7 +6,7 @@ import './index.scss';
 const DashboardContainer = ({ orders }) => {
     let totalValue = 0;
 
-    orders?.forEach(o => {
+    orders.forEach(o => {
         totalValue += o.total
     })
 

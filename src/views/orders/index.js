@@ -1,9 +1,9 @@
-import React from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux'
 import { DataGrid } from '@mui/x-data-grid';
 import { Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import Layout from "../../components/layout";
+import Layout from '../../components/layout';
 import Filter from '../../components/filter'
 
 const columns = [
@@ -39,8 +39,8 @@ const columns = [
 const Orders = () => {
     const orders = useSelector((state) => state.orders.value)
     const navigate = useNavigate();
-    const [status, setStatus] = React.useState([]);
-    const [orderList, setOrderList] = React.useState(orders);
+    const [status, setStatus] = useState([]);
+    const [orderList, setOrderList] = useState(orders);
 
     orders.forEach((value) => {
         if (!status.includes(value.state)) setStatus([...status, value.state])
@@ -58,7 +58,7 @@ const Orders = () => {
 
     return (
         <Layout>
-            <div className='filters'>
+            <div className="filters">
                 <Filter
                     data={status}
                     value={status}

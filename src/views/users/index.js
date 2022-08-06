@@ -1,13 +1,13 @@
-import React from 'react';
+import { useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { Box } from '@mui/material';
-import Layout from "../../components/layout";
+import Layout from '../../components/layout';
 import UserData from '../../data/users.json'
 import Filter from '../../components/filter';
 
 const Users = () => {
     const roles = [];
-    const [users, setUsers] = React.useState(UserData.users);
+    const [users, setUsers] = useState(UserData.users);
 
     (function getRoles() {
         UserData.users.forEach((u) => {
@@ -15,7 +15,7 @@ const Users = () => {
         })
     })();
 
-    const [role, setRole] = React.useState(roles);
+    const [role, setRole] = useState(roles);
 
     const handleChange = (e) => {
         setRole(e.target.value);
@@ -38,7 +38,7 @@ const Users = () => {
 
     return (
         <Layout>
-            <div className='filters'>
+            <div className="filters">
                 <Filter
                     data={roles}
                     value={role}

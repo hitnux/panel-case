@@ -6,7 +6,7 @@ import { logOut } from '../../reducer/user'
 
 const Logout = () => {
     const user = useSelector((state) => state.user.current)
-    const isLogin = user?.accessKey ? true : false;
+    const isLogin = user?.accessKey || false;
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -14,6 +14,7 @@ const Logout = () => {
         dispatch(logOut());
         navigate('/');
     }
+
     return (
         <>
             {!isLogin && <Navigate to='/' />}
@@ -23,7 +24,6 @@ const Logout = () => {
                 </IconButton>
             }
         </>
-
     )
 }
 export default Logout;

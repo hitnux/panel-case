@@ -1,35 +1,18 @@
-import React from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import { Box, Stepper, Step, StepLabel, StepContent, Button, Typography } from '@mui/material';
-import Layout from "../../components/layout";
+import Layout from '../../components/layout';
 import AlertModal from '../../components/alert'
+import steps from '../../static/steps'
 import './index.scss';
-
-const steps = [
-    {
-        name: 'New',
-        label: 'Yeni Sipariş',
-        description: 'Sipariş hazırlanıyor.'
-    },
-    {
-        name: 'Process',
-        label: 'Kurye Yolda',
-        description: 'Kurye siparişi teslim etmek için yola çıktı.'
-    },
-    {
-        name: 'Completed',
-        label: 'Tamamlandı',
-        description: 'Sipariş başarıyla teslim edildi.'
-    }
-];
 
 const OrderDetail = () => {
     const orders = useSelector((state) => state.orders.value)
     const { Id } = useParams();
     const order = orders.find(o => o.id === parseInt(Id));
-    const [activeStep, setActiveStep] = React.useState(steps.findIndex(s => s.name === order.state));
-    const [alert, setAlert] = React.useState(false);
+    const [activeStep, setActiveStep] = useState(steps.findIndex(s => s.name === order.state));
+    const [alert, setAlert] = useState(false);
 
     const handleNext = () => {
         if (false) {
@@ -44,8 +27,8 @@ const OrderDetail = () => {
     }
     return (
         <Layout>
-            <div className='order-detail'>
-                <div className='order-detail__step'>
+            <div className="order-detail">
+                <div className="order-detail__step">
                     <h5>Sipariş Durumu</h5>
                     <Box sx={{ maxWidth: 400 }}>
                         <Stepper activeStep={activeStep} orientation="vertical">
@@ -74,9 +57,9 @@ const OrderDetail = () => {
                     </Box>
                 </div>
                 <ul>
-                    <li className='info-box'>
-                        <div className='info-box__title'>Sipariş Bilgileri</div>
-                        <div className='order-info'>
+                    <li className="info-box">
+                        <div className="info-box__title">Sipariş Bilgileri</div>
+                        <div className="order-info">
                             <p>
                                 <b>Sipariş Id:</b> <span>{Id}</span>
                             </p>
@@ -91,9 +74,9 @@ const OrderDetail = () => {
                             </p>
                         </div>
                     </li>
-                    <li className='info-box'>
-                        <div className='info-box__title'>Müşteri Bilgileri</div>
-                        <div className='customer-info'>
+                    <li className="info-box">
+                        <div className="info-box__title">Müşteri Bilgileri</div>
+                        <div className="customer-info">
                             <p>
                                 <b>Ad Soyad:</b> <span>{`${order.user.name} ${order.user.surname}`}</span>
                             </p>

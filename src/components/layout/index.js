@@ -11,6 +11,12 @@ import Logout from '../logout';
 import PageData from '../../data/pages.json'
 import OrderData from '../../data/orders.json';
 
+const icons = {
+    HomeIcon,
+    PeopleAltIcon,
+    ShoppingBasketIcon
+}
+
 const Layout = ({ children }) => {
     const user = useSelector((state) => state.user.current);
     const orders = useSelector((state) => state.orders.value)
@@ -21,12 +27,6 @@ const Layout = ({ children }) => {
     useEffect(() => {
         dispatch(setOrders(OrderData.orders));
     });
-
-    const icons = {
-        HomeIcon,
-        PeopleAltIcon,
-        ShoppingBasketIcon
-    }
 
     const getIcon = (icon) => {
         const IconComponent = icons[icon];
@@ -47,7 +47,7 @@ const Layout = ({ children }) => {
                     <header className="flex">
                         <h1 onClick={goHome}>H</h1>
                         <ul>
-                            <li className='user'><span>Hoşgeldin <b>{user.name}</b></span></li>
+                            <li className="user"><span>Hoşgeldin <b>{user.name}</b></span></li>
                             {PageData.pages.map((page) =>
                                 (page.showMenu && page.access.find(r => (r === user.role))) &&
                                 <li key={page.name} className={window.location.pathname === page.path ? 'active' : ''}>

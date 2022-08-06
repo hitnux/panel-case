@@ -1,13 +1,12 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
+import { Navigate } from 'react-router-dom';
 import { FormGroup, TextField, Button, InputAdornment } from '@mui/material';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import HttpsIcon from '@mui/icons-material/Https';
-import { useRef } from 'react';
-import './index.scss';
 import { userLogin } from '../../utils/login'
-import { Navigate } from "react-router-dom";
 import { login } from '../../reducer/user'
+import './index.scss';
 
 const Login = () => {
     const user = useSelector((state) => state.user.current);
@@ -34,7 +33,7 @@ const Login = () => {
     }
 
     return (
-        <section className='login'>
+        <section className="login">
             {isLogin && <Navigate to="/dash" />}
             {!isLogin &&
                 <FormGroup className='login-wrapper'>
