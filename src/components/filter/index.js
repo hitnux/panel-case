@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { FormControl, Select, MenuItem, InputLabel } from '@mui/material';
-import AlertModal from '../alert'
+import { FormControl, Select, MenuItem, InputLabel, Snackbar, Alert } from '@mui/material';
 import './index.scss'
 
 const Filter = ({
@@ -62,13 +61,21 @@ const Filter = ({
                             ))}
                         </Select>
                     </FormControl>
-                    <AlertModal state={alert} onChange={alertChange}>En az bir değer seçilmeli</AlertModal>
-
+                    <Snackbar
+                        open={alert}
+                        autoHideDuration={3000}
+                        onClose={alertChange}
+                        anchorOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right'
+                        }}>
+                        <Alert onClose={alertChange} severity="error" sx={{ width: '100%' }}>
+                            En az bir değer seçilmeli
+                        </Alert>
+                    </Snackbar>
                 </>
             }
-
         </>
-
     )
 }
 

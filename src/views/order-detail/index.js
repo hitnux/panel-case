@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux'
-import { Box, Stepper, Step, StepLabel, StepContent, Button, Typography } from '@mui/material';
+import { Box, Stepper, Step, StepLabel, StepContent, Button, Typography, Snackbar, Alert } from '@mui/material';
 import { formatDate, formatCurrency } from '../../utils/format';
 import Layout from '../../components/layout';
-import AlertModal from '../../components/alert'
 import steps from '../../static/steps'
 import './index.scss';
 
@@ -23,9 +22,11 @@ const OrderDetail = () => {
             setAlert(true);
         }
     };
+
     const alertChange = () => {
         setAlert(false);
     }
+
     return (
         <Layout>
             <div className="order-detail">
@@ -97,9 +98,14 @@ const OrderDetail = () => {
                     </li>
                 </ul>
             </div>
-            {alert &&
-                <AlertModal state={alert} onChange={alertChange}>Sipariş tamamlama işlemi yalnızca kuryeler tarafından gerçekleştirilebilir</AlertModal>
-            }
+            <Snackbar open={alert} autoHideDuration={3000} onClose={alertChange} anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right'
+            }}>
+                <Alert onClose={alertChange} severity="error" sx={{ width: '100%' }}>
+                    Sipariş tamamlama işlemi yalnızca kuryeler tarafından gerçekleştirilebilir
+                </Alert>
+            </Snackbar>
         </Layout>
     )
 }
