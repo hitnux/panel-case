@@ -4,6 +4,7 @@ import { Box } from '@mui/material';
 import Layout from '../../components/layout';
 import UserData from '../../data/users.json'
 import Filter from '../../components/filter';
+import { formatDate } from '../../utils/format';
 
 const Users = () => {
     const roles = [];
@@ -31,7 +32,7 @@ const Users = () => {
             field: 'created',
             headerName: 'Registration Date',
             width: 200,
-            valueGetter: (data) => new Date(data.value).toLocaleDateString("tr-TR")
+            valueGetter: (data) => formatDate(data.value)
         },
         { field: 'role', headerName: 'Role', width: 200 }
     ];

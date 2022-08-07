@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import { Box, Stepper, Step, StepLabel, StepContent, Button, Typography } from '@mui/material';
+import { formatDate, formatCurrency } from '../../utils/format';
 import Layout from '../../components/layout';
 import AlertModal from '../../components/alert'
 import steps from '../../static/steps'
@@ -13,8 +14,6 @@ const OrderDetail = () => {
     const order = orders.find(o => o.id === parseInt(Id));
     const [activeStep, setActiveStep] = useState(steps.findIndex(s => s.name === order.state));
     const [alert, setAlert] = useState(false);
-    const options = { hour:'numeric',minute:'numeric', year: 'numeric', month: 'long', day: 'numeric' };
-
 
     const handleNext = () => {
         if (false) {
@@ -66,7 +65,7 @@ const OrderDetail = () => {
                                 <b>Sipariş Id:</b> <span>{Id}</span>
                             </p>
                             <p>
-                                <b>Tarih:</b> <span>{new Date(order.date).toLocaleDateString("tr-TR", options)}</span>
+                                <b>Tarih:</b> <span>{formatDate(order.date)}</span>
                             </p>
                             <div>
                                 <b>Sipariş İçeriği:</b>
@@ -80,7 +79,7 @@ const OrderDetail = () => {
                                 <b>Sipariş Notu:</b> <span>{order.note}</span>
                             </p>
                             <p>
-                                <b>Tutar: </b> <span>{`${order.total.toFixed(2).replace('.', ',')} TL`}</span>
+                                <b>Tutar: </b> <span>{formatCurrency(order.total)}</span>
                             </p>
                         </div>
                     </li>
