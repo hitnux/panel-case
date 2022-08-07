@@ -19,8 +19,10 @@ const Users = () => {
     const [role, setRole] = useState(roles);
 
     const handleChange = (e) => {
-        setRole(e.target.value);
-        setUsers(UserData.users.filter((user) => (e.target.value.find((r) => (r === user.role)))));
+        if (e.target.value.length > 0) {
+            setRole(e.target.value);
+            setUsers(UserData.users.filter((user) => (e.target.value.find((r) => (r === user.role)))));
+        }
     };
 
     const columns = [
