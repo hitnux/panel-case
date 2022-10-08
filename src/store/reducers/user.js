@@ -1,16 +1,30 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { getUser } from '../../utils/login';
 import { findUser } from '../../utils/login';
+import UserData from '../../data/users.json';
 
+const Users = UserData.users;
 const accessKey = localStorage.getItem('accces_key');
+const roles = [];
+
+Users.forEach((u) => {
+    if (!roles.find((r) => (r === u.role))) roles.push(u.role);
+});
+
+const initialState = {
+    users: accessKey ? Users : [],
+    roles,
+    current: accessKey ? getUser() : {},
+    isLogin: accessKey ? true : false
+};
 
 export const userSlice = createSlice({
     name: 'user',
-    initialState: {
-        current: accessKey ? getUser() : {},
-        isLogin: accessKey ? true : false
-    },
+    initialState,
     reducers: {
+        filterUser: (state, action) => {
+            state.users = Users.filter((user) => (action.payload.find((r) => (r === user.role))))
+        },
         login: (state, action) => {
             const user = findUser({ username: action.payload.username, password: action.payload.password });
 
@@ -28,5 +42,5 @@ export const userSlice = createSlice({
     }
 })
 
-export const { login, logOut } = userSlice.actions
+export const { login, logOut, filterUser } = userSlice.actions
 export default userSlice.reducer

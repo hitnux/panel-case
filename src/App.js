@@ -7,22 +7,23 @@ import Orders from './views/orders';
 import OrderDetail from './views/order-detail';
 import PageData from './data/pages.json'
 
-function App() {
-  const components = {
-    Home: Dashboard,
-    Users,
-    Login,
-    Orders
-  };
+const components = {
+  Home: Dashboard,
+  Users,
+  Login,
+  Orders
+};
 
-  function getComponent(name) {
-    const Component = components[name];
-    if (Component)
-      return (
-        <Component />
-      )
-    return <Login />
-  }
+const getComponent = (name) => {
+  const Component = components[name];
+  if (Component)
+    return (
+      <Component />
+    )
+  return <Login />
+}
+
+function App() {
 
   return (
     <div className="App">
