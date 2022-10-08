@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { DataGrid } from '@mui/x-data-grid';
 import { Box } from '@mui/material';
 import Layout from '../../components/layout';
 import Filter from '../../components/filter';
 import { formatDate } from '../../utils/format';
-import { filterUser } from '../../store/reducers/user';
+import { filterUser, getAllUsers } from '../../store/reducers/user';
 
 const columns = [
     { field: 'id', headerName: 'ID', width: 50 },
@@ -26,6 +26,10 @@ const Users = () => {
     const roles = useSelector((state) => state.user.roles);
     const [activeRole, setActiveRole] = useState(roles);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getAllUsers());
+    }, []);
 
     const handleChange = (e) => {
         if (e.target.value.length > 0) {

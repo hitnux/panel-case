@@ -12,7 +12,7 @@ Users.forEach((u) => {
 });
 
 const initialState = {
-    users: accessKey ? Users : [],
+    users: [],
     roles,
     current: accessKey ? getUser() : {},
     isLogin: accessKey ? true : false
@@ -22,6 +22,9 @@ export const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
+        getAllUsers: (state) => {
+            state.users = Users;
+        },
         filterUser: (state, action) => {
             state.users = Users.filter((user) => (action.payload.find((r) => (r === user.role))))
         },
@@ -42,5 +45,5 @@ export const userSlice = createSlice({
     }
 })
 
-export const { login, logOut, filterUser } = userSlice.actions
+export const { login, logOut, filterUser, getAllUsers } = userSlice.actions
 export default userSlice.reducer
