@@ -1,11 +1,14 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import Layout from '../../components/layout';
-import UsersData from '../../data/users.json';
 import { allOrders } from '../../store/reducers/orders';
+import { formatCurrency } from '../../utils/format';
+import { getAllUsers } from '../../store/reducers/user'
 import './index.scss';
 
 const DashboardContainer = ({ orders }) => {
+    const users = useSelector((state) => state.user.users);
+
     let totalValue = 0;
 
     orders.forEach(o => {
@@ -16,12 +19,12 @@ const DashboardContainer = ({ orders }) => {
         {
             id: 1,
             name: 'Toplam Ciro',
-            value: `${totalValue.toFixed(2).replace('.', ',')} TL`
+            value: formatCurrency(totalValue)
         },
         {
             id: 2,
             name: 'Toplam Kullanıcı',
-            value: UsersData.users.length
+            value: users.length
         },
         {
             id: 3,
@@ -44,6 +47,7 @@ const DashboardContainer = ({ orders }) => {
             value: orders.filter(o => o.state === 'Completed').length
         }
     ]
+
     return (
         <div className='card-container'>
             {data.map((d) =>
@@ -62,6 +66,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         dispatch(allOrders());
+        dispatch(getAllUsers());
     });
 
     return (

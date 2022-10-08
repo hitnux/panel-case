@@ -9,16 +9,13 @@ import './index.scss';
 
 const Login = () => {
     const user = useSelector((state) => state.user.current);
-    const dispatch = useDispatch();
-
     const form = {
         username: useRef(),
         password: useRef()
     };
 
-    const getValue = (key) => {
-        return form[key].current?.value || null
-    }
+    const dispatch = useDispatch();
+    const getValue = (key) => (form[key].current?.value || null);
 
     const accessControl = () => {
         dispatch(login({

@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getUser } from '../../utils/login';
-import { findUser } from '../../utils/login';
+import { getUser, findUser, secure } from '../../utils/login';
 import UserData from '../../data/users.json';
 
 const Users = UserData.users;
@@ -23,10 +22,12 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         getAllUsers: (state) => {
-            state.users = Users;
+            state.users = secure(Users);
         },
         filterUser: (state, action) => {
-            state.users = Users.filter((user) => (action.payload.find((r) => (r === user.role))))
+            state.users = secure(
+                Users.filter((user) => (action.payload.find((r) => (r === user.role))))
+            );
         },
         login: (state, action) => {
             const user = findUser({ username: action.payload.username, password: action.payload.password });
