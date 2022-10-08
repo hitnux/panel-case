@@ -40,7 +40,7 @@ const Login = () => {
     }
 
     return (
-        <section className="login">
+        <section className="login" onKeyDown={((e) => { if (e.key === 'Enter') accessControl() })}>
             <FormGroup className='login-wrapper'>
                 <h1>Login</h1>
                 <TextField id="username" label="Username" variant="outlined"
