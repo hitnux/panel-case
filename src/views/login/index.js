@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom';
 import { FormGroup, TextField, Button, InputAdornment } from '@mui/material';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import HttpsIcon from '@mui/icons-material/Https';
-import { login } from '../../reducer/user'
+import { login } from '../../store/reducers/user'
 import './index.scss';
 
 const Login = () => {
