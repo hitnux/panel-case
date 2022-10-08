@@ -32,34 +32,39 @@ const Login = () => {
         else alert('error')
     }
 
+    if (isLogin) {
+        return (
+            <section className="login">
+                <Navigate to="/dash" />
+            </section>
+        )
+    }
+
     return (
         <section className="login">
-            {isLogin && <Navigate to="/dash" />}
-            {!isLogin &&
-                <FormGroup className='login-wrapper'>
-                    <h1>Login</h1>
-                    <TextField id="username" label="Username" variant="outlined"
-                        inputRef={form.username}
-                        InputProps={{
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    <AccountCircle />
-                                </InputAdornment>
-                            ),
-                        }}
-                    />
-                    <TextField id="password" label="Password" type="password" variant="outlined"
-                        inputRef={form.password}
-                        InputProps={{
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    <HttpsIcon />
-                                </InputAdornment>
-                            ),
-                        }} />
-                    <Button variant="contained" onClick={accessControl}>Login</Button>
-                </FormGroup>
-            }
+            <FormGroup className='login-wrapper'>
+                <h1>Login</h1>
+                <TextField id="username" label="Username" variant="outlined"
+                    inputRef={form.username}
+                    InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <AccountCircle />
+                            </InputAdornment>
+                        ),
+                    }}
+                />
+                <TextField id="password" label="Password" type="password" variant="outlined"
+                    inputRef={form.password}
+                    InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <HttpsIcon />
+                            </InputAdornment>
+                        ),
+                    }} />
+                <Button variant="contained" onClick={accessControl}>Login</Button>
+            </FormGroup>
         </section>
     );
 }
