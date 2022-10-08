@@ -1,6 +1,8 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import Layout from '../../components/layout';
 import UsersData from '../../data/users.json';
+import { allOrders } from '../../store/reducers/orders';
 import './index.scss';
 
 const DashboardContainer = ({ orders }) => {
@@ -55,7 +57,12 @@ const DashboardContainer = ({ orders }) => {
 }
 
 const Dashboard = () => {
-    const orders = useSelector((state) => state.orders.value)
+    const orders = useSelector((state) => state.orders.list);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(allOrders());
+    });
 
     return (
         <Layout>

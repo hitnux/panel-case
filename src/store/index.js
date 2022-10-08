@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
-import userReducer from './reducer/user'
-import orderReducer from './reducer/orders'
+import userReducer from './reducers/user'
+import orderReducer from './reducers/orders'
 
 export default configureStore({
     reducer: {

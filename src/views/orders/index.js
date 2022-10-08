@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { DataGrid } from '@mui/x-data-grid';
 import { Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { formatDate, formatCurrency } from '../../utils/format';
 import Layout from '../../components/layout';
 import Filter from '../../components/filter'
+import { setFilters } from '../../store/reducers/orders'
 
 const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
@@ -38,30 +38,24 @@ const columns = [
 ];
 
 const Orders = () => {
-    const orders = useSelector((state) => state.orders.value)
+    const list = useSelector((state) => state.orders.list)
+    const filters = useSelector((state) => state.orders.filters)
+    const dispatch = useDispatch()
     const navigate = useNavigate();
-    const [orderList, setOrderList] = useState(orders);
-    let status = [];
-
-    orders.forEach((value) => {
-        if (!status.includes(value.state)) status = [...status, value.state]
-    });
 
     const filterChange = (e) => {
-        setOrderList(orders.filter(order => (e.target.value.find(v => v === order.state))));
+        dispatch(setFilters(e.target.value));
     }
 
     const cellClick = (e) => {
-        if (e.field === 'detail') {
-            navigate(`/order/${e.id}`);
-        }
+        if (e.field === 'detail') navigate(`/order/${e.id}`);
     }
 
     return (
         <Layout>
             <Filter
-                data={status}
-                value={status}
+                data={filters}
+                value={filters}
                 label="Status"
                 tabs={true}
                 onChange={filterChange}
@@ -76,7 +70,7 @@ const Orders = () => {
                 },
             }}>
                 <DataGrid
-                    rows={orderList}
+                    rows={list}
                     columns={columns}
                     pageSize={10}
                     rowsPerPageOptions={[10]}

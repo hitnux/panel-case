@@ -1,15 +1,12 @@
-import { useEffect } from 'react';
 import { IconButton } from '@mui/material';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import HomeIcon from '@mui/icons-material/Home';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import { setOrders } from '../../reducer/orders';
 import PageAccess from '../../utils/access'
 import Logout from '../logout';
 import PageData from '../../data/pages.json'
-import OrderData from '../../data/orders.json';
 
 const icons = {
     HomeIcon,
@@ -19,14 +16,9 @@ const icons = {
 
 const Layout = ({ children }) => {
     const user = useSelector((state) => state.user.current);
-    const orders = useSelector((state) => state.orders.value)
+    const orders = useSelector((state) => state.orders.list)
     const access = PageAccess(user);
     const navigate = useNavigate();
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(setOrders(OrderData.orders));
-    });
 
     const getIcon = (icon) => {
         const IconComponent = icons[icon];

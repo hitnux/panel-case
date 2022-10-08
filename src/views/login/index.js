@@ -1,17 +1,14 @@
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Navigate } from 'react-router-dom';
 import { FormGroup, TextField, Button, InputAdornment } from '@mui/material';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import HttpsIcon from '@mui/icons-material/Https';
-import { userLogin } from '../../utils/login'
 import { login } from '../../reducer/user'
 import './index.scss';
 
 const Login = () => {
     const user = useSelector((state) => state.user.current);
-    const [isLogin, setLogin] = useState(user?.accessKey || false);
-
     const dispatch = useDispatch();
 
     const form = {
@@ -24,15 +21,17 @@ const Login = () => {
     }
 
     const accessControl = () => {
-        const user = userLogin(getValue('username'), getValue('password'));
-        if (user) {
-            dispatch(login(user))
-            setLogin(true);
+        dispatch(login({
+            username: getValue('username'),
+            password: getValue('password')
+        }));
+
+        if (!localStorage.getItem('accces_key')) {
+            alert('error')
         }
-        else alert('error')
     }
 
-    if (isLogin) {
+    if (user?.accessKey) {
         return (
             <section className="login">
                 <Navigate to="/dash" />

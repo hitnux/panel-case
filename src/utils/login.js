@@ -18,13 +18,4 @@ const getUser = () => {
     return false;
 }
 
-const userLogin = (username, password) => {
-    const user = findUser({ username, password });
-    if (user) {
-        localStorage.setItem('accces_key', user.accessKey);
-        return user
-    }
-    return 'error'
-}
-
-export { userLogin, getUser }
+export { getUser, findUser }

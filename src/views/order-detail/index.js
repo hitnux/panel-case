@@ -1,16 +1,20 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Box, Stepper, Step, StepLabel, StepContent, Button, Typography, Snackbar, Alert } from '@mui/material';
 import { formatDate, formatCurrency } from '../../utils/format';
+import { findOrder } from '../../store/reducers/orders';
 import Layout from '../../components/layout';
 import steps from '../../static/steps'
 import './index.scss';
 
 const OrderDetail = () => {
-    const orders = useSelector((state) => state.orders.value)
+    const dispatch = useDispatch();
     const { Id } = useParams();
-    const order = orders.find(o => o.id === parseInt(Id));
+
+    dispatch(findOrder(Id));
+
+    const order = useSelector((state) => state.orders.currentOrder);
     const [activeStep, setActiveStep] = useState(steps.findIndex(s => s.name === order.state));
     const [alert, setAlert] = useState(false);
 
@@ -22,10 +26,6 @@ const OrderDetail = () => {
             setAlert(true);
         }
     };
-
-    const alertChange = () => {
-        setAlert(false);
-    }
 
     return (
         <Layout>
@@ -98,11 +98,11 @@ const OrderDetail = () => {
                     </li>
                 </ul>
             </div>
-            <Snackbar open={alert} autoHideDuration={3000} onClose={alertChange} anchorOrigin={{
+            <Snackbar open={alert} autoHideDuration={3000} onClose={() => { setAlert(false) }} anchorOrigin={{
                 vertical: 'top',
                 horizontal: 'right'
             }}>
-                <Alert onClose={alertChange} severity="error" sx={{ width: '100%' }}>
+                <Alert onClose={() => { setAlert(false) }} severity="error" sx={{ width: '100%' }}>
                     Sipariş tamamlama işlemi yalnızca kuryeler tarafından gerçekleştirilebilir
                 </Alert>
             </Snackbar>
