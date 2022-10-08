@@ -20,61 +20,61 @@ const Filter = ({
         }
     }
 
-    const all = () => {
-        setVal(value);
-        onChange({ target: { value } });
-    }
-
-    const only = (event) => {
-        const e = { target: { value: [event.target.value] } }
-        setVal(e.target.value);
-        onChange(e);
-    }
-
-    const alertChange = () => {
-        setAlert(false);
-    }
+    if (tabs)
+        return (
+            <div className="tabs">
+                <button
+                    onClick={(() => {
+                        setVal(value);
+                        onChange({ target: { value } });
+                    })}
+                    className={val.length === value.length ? 'active' : ''}>
+                    All Orders
+                </button>
+                {value.map((v) =>
+                    <button
+                        key={v}
+                        onClick={((event) => {
+                            const e = { target: { value: [event.target.value] } }
+                            setVal(e.target.value);
+                            onChange(e);
+                        })}
+                        className={val.length === 1 & val[0] === v ? 'active' : ''}
+                        value={v}>
+                        {v} Orders
+                    </button>
+                )}
+            </div>
+        )
 
     return (
         <>
-            {tabs &&
-                <div className="tabs">
-                    <button onClick={all} className={val.length === value.length ? 'active' : ''}>All Orders</button>
-                    {value.map((v) =>
-                        <button key={v} onClick={only} className={val.length === 1 & val[0] === v ? 'active' : ''} value={v}>{v} Orders</button>
-                    )}
-                </div>
-            }
-            {!tabs &&
-                <>
-                    <FormControl sx={{ m: 1, minWidth: 100, maxWidth: 170 }} size="small">
-                        <InputLabel id="demo-select-small">{label}</InputLabel>
-                        <Select
-                            multiple
-                            displayEmpty
-                            value={val}
-                            label={label}
-                            onChange={changed}
-                        >
-                            {data.map((d) => (
-                                <MenuItem key={d} value={d}>{d}</MenuItem>
-                            ))}
-                        </Select>
-                    </FormControl>
-                    <Snackbar
-                        open={alert}
-                        autoHideDuration={3000}
-                        onClose={alertChange}
-                        anchorOrigin={{
-                            vertical: 'top',
-                            horizontal: 'right'
-                        }}>
-                        <Alert onClose={alertChange} severity="error" sx={{ width: '100%' }}>
-                            En az bir değer seçilmeli
-                        </Alert>
-                    </Snackbar>
-                </>
-            }
+            <FormControl sx={{ m: 1, minWidth: 100, maxWidth: 170 }} size="small">
+                <InputLabel id="demo-select-small">{label}</InputLabel>
+                <Select
+                    multiple
+                    displayEmpty
+                    value={val}
+                    label={label}
+                    onChange={changed}
+                >
+                    {data.map((d) => (
+                        <MenuItem key={d} value={d}>{d}</MenuItem>
+                    ))}
+                </Select>
+            </FormControl>
+            <Snackbar
+                open={alert}
+                autoHideDuration={3000}
+                onClose={(() => { setAlert(false) })}
+                anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right'
+                }}>
+                <Alert onClose={(() => { setAlert(false) })} severity="error" sx={{ width: '100%' }}>
+                    En az bir değer seçilmeli
+                </Alert>
+            </Snackbar>
         </>
     )
 }

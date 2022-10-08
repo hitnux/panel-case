@@ -1,12 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, Navigate } from "react-router-dom";
 import { IconButton } from '@mui/material';
-import LogoutIcon from '@mui/icons-material/Logout';
 import { logOut } from '../../reducer/user'
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const Logout = () => {
-    const user = useSelector((state) => state.user.current)
-    const isLogin = user?.accessKey || false;
+    const isLogin = useSelector((state) => state.user.isLogin)
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -15,15 +14,12 @@ const Logout = () => {
         navigate('/');
     }
 
+    if (!isLogin) return <Navigate to='/' />
+
     return (
-        <>
-            {!isLogin && <Navigate to='/' />}
-            {isLogin &&
-                <IconButton aria-label='logout' onClick={logout}>
-                    <LogoutIcon />
-                </IconButton>
-            }
-        </>
+        <IconButton aria-label='logout' onClick={logout}>
+            <LogoutIcon />
+        </IconButton>
     )
 }
 export default Logout;

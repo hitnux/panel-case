@@ -27,35 +27,28 @@ const Layout = ({ children }) => {
         )
     };
 
-    const goHome = () => {
-        navigate('/dash');
-    }
+    if (!access) return <Navigate to="/" />
 
     return (
         <div>
-            {!access && <Navigate to="/" />}
-            {access &&
-                <>
-                    <header className="flex">
-                        <h1 onClick={goHome}>H</h1>
-                        <ul>
-                            <li className="user"><span>Hoşgeldin <b>{user.name}</b></span></li>
-                            {PageData.pages.map((page) =>
-                                (page.showMenu && page.access.find(r => (r === user.role))) &&
-                                <li key={page.name} className={window.location.pathname === page.path ? 'active' : ''}>
-                                    <IconButton aria-label={page.name} onClick={() => { navigate(page.path) }}>
-                                        {getIcon(page.icon)}
-                                    </IconButton>
-                                </li>
-                            )}
-                            <li><Logout /></li>
-                        </ul>
-                    </header>
-                    <main>
-                        {orders.length > 0 && children}
-                    </main>
-                </>
-            }
+            <header className="flex">
+                <h1 onClick={(() => { navigate('/dash') })}>H</h1>
+                <ul>
+                    <li className="user"><span>Hoşgeldin <b>{user.name}</b></span></li>
+                    {PageData.pages.map((page) =>
+                        (page.showMenu && page.access.find(r => (r === user.role))) &&
+                        <li key={page.name} className={window.location.pathname === page.path ? 'active' : ''}>
+                            <IconButton aria-label={page.name} onClick={() => { navigate(page.path) }}>
+                                {getIcon(page.icon)}
+                            </IconButton>
+                        </li>
+                    )}
+                    <li><Logout /></li>
+                </ul>
+            </header>
+            <main>
+                {orders.length > 0 && children}
+            </main>
         </div>
     )
 }
